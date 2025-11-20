@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskEarn - Earn Money</title>
+    <style>
+        body { font-family: Arial; background: #f4f4f4; padding: 20px; }
+        .card { background: #fff; padding: 20px; border-radius: 10px; margin-bottom: 15px; }
+        .btn { background: #28a745; color: #fff; padding: 10px 15px; border: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+<h2>Welcome to TaskEarn</h2>
+
+<div class="card">
+    <h3>Your Balance</h3>
+    <p id="balance">₹0</p>
+    <button class="btn" onclick="earn()">Earn ₹1</button>
+</div>
+
+<div class="card">
+    <h3>Tasks</h3>
+    <p>Click button to earn money.</p>
+</div>
+
+<script>
+    async function earn() {
+        let res = await fetch("https://your-backend-url.onrender.com/earn");
+        let data = await res.json();
+        document.getElementById("balance").innerText = "₹" + data.balance;
+    }
+</script>
+
+</body>
+</html>
