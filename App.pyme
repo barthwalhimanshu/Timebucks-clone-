@@ -1,0 +1,20 @@
+from flask import Flask, jsonify
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app)
+
+balance = 0
+
+@app.route("/earn")
+def earn():
+    global balance
+    balance += 1
+    return jsonify({"balance": balance})
+
+@app.route("/")
+def home():
+    return "TaskEarn Backend Running"
+
+if __name__ == "__main__":
+    app.run()
